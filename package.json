@@ -12,11 +12,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1613.0",
     "express": "^4.19.2",
     "mongodb": "^6.5.0",
-    "mongoose": "^8.3.3"
+    "mongoose": "^8.3.3",
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "serverless-offline": "^13.5.0"
   }
 }
