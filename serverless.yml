@@ -1,0 +1,29 @@
+service: simple-crud-app
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: local
+  iam:
+    role: ${env:AWS_IAM_ROLE} #arn:aws:iam::471461956779:role/prototype-dev-us-west-2-lambdaRole
+  layers:
+    - ${env:AWS_LAYER} #arn:aws:lambda:us-west-2:471461956779:layer:main:6
+  
+
+custom:
+  serverless-offline:
+    ignoreJWTSignature: true
+    useChildProcesses: false
+
+functions:
+  main:
+    handler: index.main
+    events:
+      - httpApi: 'GET /api/products/{proxy+}'
+      - httpApi: 'POST /api/products/{proxy+}'
+      - httpApi: 'PUT /api/products/{proxy+}'
+      - httpApi: 'DELETE /api/products/{proxy+}'
+
+plugins:
+  - serverless-offline
